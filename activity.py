@@ -39,11 +39,13 @@ class GComprisLauncher(Activity):
         hbox = Gtk.HBox()
         self.set_canvas(hbox)
         self.show_all()
-        options = [
-            'gcompris-qt', '--nolockfile', '--fullscreen=native', '--noprint']
+        #options = ['gcompris-qt', ' ']
+        options = ['gcompris-qt', 'nolockfile', 'fullscreen=native', 'noprint']    
         doc_path = self.get_documents_path()
         if doc_path is not None:
-            options.extend(('--savedir', doc_path))
+            options.extend(('savedir', doc_path))
+        proc = subprocess.Popen(options)
+
         proc = subprocess.Popen(options)
 
         # Stay alive with a blank window mapped for at least 60 seconds
